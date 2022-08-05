@@ -3,6 +3,14 @@ const phrase = document.getElementById('phrase');
 const btn_reset = document.getElementsByClassName('btn_reset');
 let missed = 0;
 
+const phrases = [
+  'Hobbits',
+  'live',
+  'in',
+  'the',
+  'shire'    
+];
+
 //return a random phrase from an array
 const getRandomPhraseAsArray = arr => {
 
