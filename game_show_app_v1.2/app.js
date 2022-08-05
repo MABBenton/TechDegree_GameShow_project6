@@ -14,11 +14,11 @@ const phrases = [
 
 // return a random phrase from an array
 const getRandomPhraseAsArray = arr => {
-  let randomNumber = Math.floor(Math.random() * phrases.length);
-  let phrase = phrases[randomNumber];
+  let randomNumber = Math.floor(Math.random() * arr.length);
+  let phrase = arr[randomNumber];
   return phrase;
 }
-console.log(getRandomPhraseAsArray());
+console.log(getRandomPhraseAsArray(phrases));
 
 // adds the letters of a string to the display
 const addPhraseToDisplay = arr => {
