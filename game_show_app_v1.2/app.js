@@ -35,7 +35,15 @@ const addPhraseToDisplay = arr => {
 
 // check if a letter is in the phrase
 const checkLetter = button => {
-
+  const letters = phrase.getElementsByTagName('li');
+  let matchLetter = null;
+  for (let i = 0; i < letters.length; i++) {
+    if( letters[i].textContent.toLowerCase() === button.textContent ) {
+      letters[i].className += ' show'; 
+      matchLetter = letters[i].textContent;
+    }
+  }
+  return matchLetter;
 }
 
 // check if the game has been won or lost 
@@ -52,5 +60,14 @@ btn__reset.addEventListener('click', () => {
 
 // listen for the onscreen keyboard to be clicked
 qwerty.addEventListener('click', (e) => {
-
+  if( e.target.tagName === 'BUTTON' && e.target.className !== 'chosen' ) {
+    const checkLetterResult = checkLetter(e.target);
+    e.target.className += 'chosen';
+    if( checkLetterResult === null ) {
+      missed += 1;
+      let ol = document.getElementsByTagName('ol')[0];
+      let tries = document.getElementsByClassName('tries')[0];
+      ol.removeChild(tries);
+    }
+  }
 });
