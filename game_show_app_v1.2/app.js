@@ -47,19 +47,19 @@ const checkLetter = button => {
 }
 
 // check if the game has been won or lost 
-const checkWin = arr => {
-  const liLetter = document.getElementsByClassName('letter')[0];
-  const liShow = document.getElementsByClassName('show')[0];
+const checkWin = () => {
+  const liLetter = phrase.getElementsByClassName('letter')[0];
+  const liShow = phrase.getElementsByClassName('show')[0];
   const overlay = document.getElementById('overlay');
 
   if ( liLetter.length === liShow.length ) {
-    const win = overlay.className += ' win';
+    const win = overlay.className = 'win';
     win.textContent = 'You won!';  
     win.style.display = 'flex';
     return win;
   } else {
     if ( missed > 4 ) {
-      const lose = overlay.className += 'lose';
+      const lose = overlay.className = 'lose';
       lose.textContent = 'You lost, thanks for playing!';
       lose.style.display = 'flex';
       return lose;
