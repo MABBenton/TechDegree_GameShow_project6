@@ -37,7 +37,7 @@ const addPhraseToDisplay = arr => {
 const checkLetter = button => {
   const letters = phrase.getElementsByTagName('li');
   let matchLetter = null;
-  for (let i = 0; i < letters.length; i++) {
+  for ( let i = 0; i < letters.length; i++ ) {
     if( letters[i].textContent.toLowerCase() === button.textContent ) {
       letters[i].className += ' show'; 
       matchLetter = letters[i].textContent;
@@ -47,8 +47,24 @@ const checkLetter = button => {
 }
 
 // check if the game has been won or lost 
-const checkWin = () => {
+const checkWin = arr => {
+  const liLetter = document.getElementsByClassName('letter')[0];
+  const liShow = document.getElementsByClassName('show')[0];
+  const overlay = document.getElementById('overlay');
 
+  if ( liLetter.length === liShow.length ) {
+    const win = overlay.className += ' win';
+    win.textContent = 'You won!';  
+    win.style.display = 'flex';
+    return win;
+  } else {
+    if ( missed > 4 ) {
+      const lose = overlay.className += 'lose';
+      lose.textContent = 'You lost, thanks for playing!';
+      lose.style.display = 'flex';
+      return lose;
+    }
+  }
 }
 
 // listen for the start game button to be pressed
