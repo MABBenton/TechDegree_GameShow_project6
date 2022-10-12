@@ -48,21 +48,21 @@ const checkLetter = button => {
 
 // check if the game has been won or lost 
 const checkWin = () => {
-  const liLetter = phrase.getElementsByClassName('letter')[0];
-  const liShow = phrase.getElementsByClassName('show')[0];
+  const liLetter = document.getElementsByClassName('letter')[0];
+  const liShow = document.getElementsByClassName('show')[0];
   const overlay = document.getElementById('overlay');
 
   if ( liLetter.length === liShow.length ) {
-    const win = overlay.className = 'win';
-    win.textContent = 'You won!';  
-    win.style.display = 'flex';
-    return win;
+    overlay.className = 'win';
+    overlay.textContent = 'You won!';  
+    overlay.style.display = 'flex';
+    return overlay;
   } else {
     if ( missed > 4 ) {
-      const lose = overlay.className = 'lose';
-      lose.textContent = 'You lost, thanks for playing!';
-      lose.style.display = 'flex';
-      return lose;
+      overlay.className = 'lose';
+      overlay.textContent = 'You lost, thanks for playing!';
+      overlay.style.display = 'flex';
+      return overlay;
     }
   }
 }
@@ -86,4 +86,5 @@ qwerty.addEventListener('click', (e) => {
       ol.removeChild(tries);
     }
   }
+  checkWin();
 });
