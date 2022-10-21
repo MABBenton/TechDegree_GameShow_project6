@@ -48,8 +48,8 @@ const checkLetter = button => {
 
 // check if the game has been won or lost 
 const checkWin = () => {
-  const liLetter = document.getElementsByClassName('letter')[0];
-  const liShow = document.getElementsByClassName('show')[0];
+  const liLetter = document.getElementsByClassName('letter');
+  const liShow = document.getElementsByClassName('show');
   const overlay = document.getElementById('overlay');
 
   if ( liLetter.length === liShow.length ) {
