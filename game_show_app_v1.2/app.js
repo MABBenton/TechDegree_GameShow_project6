@@ -56,12 +56,14 @@ const checkWin = () => {
     overlay.className = 'win';
     overlay.textContent = 'You won!';  
     overlay.style.display = 'flex';
+    overlay.style.fontSize = '4em';
     return overlay;
   } else {
     if ( missed > 4 ) {
       overlay.className = 'lose';
       overlay.textContent = 'You lost, thanks for playing!';
       overlay.style.display = 'flex';
+      overlay.style.fontSize = '4em';
       return overlay;
     }
   }
