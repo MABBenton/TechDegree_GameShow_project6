@@ -46,24 +46,27 @@ const checkLetter = button => {
   return matchLetter;
 }
 
-// check if the game has been won or lost 
+// check if the game has been won or lost and include restart button
 const checkWin = () => {
   const liLetter = document.getElementsByClassName('letter');
   const liShow = document.getElementsByClassName('show');
   const overlay = document.getElementById('overlay');
+  //const restartButton = document.querySelector('#overlay').innerHTML = '<a class="btn__reset">Restart Game</a>';
 
   if ( liLetter.length === liShow.length ) {
     overlay.className = 'win';
-    overlay.textContent = 'You won!';  
+    //overlay.textContent = 'You won!';  
     overlay.style.display = 'flex';
     overlay.style.fontSize = '4em';
+    overlay.innerHTML = 'You won! <a class="btn__reset">Restart Game</a>';
     return overlay;
   } else {
     if ( missed > 4 ) {
       overlay.className = 'lose';
-      overlay.textContent = 'You lost, thanks for playing!';
+      //overlay.textContent = 'You lost, try again!';
       overlay.style.display = 'flex';
       overlay.style.fontSize = '4em';
+      overlay.innerHTML = 'You lost. Try again. <a class="btn__reset">Restart Game</a>';
       return overlay;
     }
   }
@@ -90,3 +93,5 @@ qwerty.addEventListener('click', (e) => {
   }
   checkWin();
 });
+
+// listen for the Restart Game button to be clicked
