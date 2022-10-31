@@ -5,11 +5,11 @@ const ul = phrase.getElementsByTagName('ul')[0];
 let missed = 0;
 
 const phrases = [
-  'Hobbits',
-  'live',
-  'in',
-  'the',
-  'shire'    
+  'Hobbits live in the shire',
+  'Some people like hot tea',
+  'When in Rome',
+  'The sun rises in the east',
+  'Life is better when dancing'    
 ];
 
 // return a random phrase from an array
