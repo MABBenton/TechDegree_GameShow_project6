@@ -1,6 +1,7 @@
 const qwerty = document.getElementById('qwerty');
 const phrase = document.getElementById('phrase');
 const btn__reset = document.getElementsByClassName('btn__reset')[0];
+const ul = phrase.getElementsByTagName('ul')[0];
 let missed = 0;
 
 const phrases = [
@@ -20,7 +21,6 @@ const getRandomPhraseAsArray = arr => {
 
 // adds the letters of a string to the display
 const addPhraseToDisplay = arr => {  
-  const ul = phrase.getElementsByTagName('ul')[0];
   for (let i = 0; i < arr.length; i++) {
     const li = document.createElement('li');
     li.textContent = arr[i];
@@ -51,22 +51,23 @@ const checkWin = () => {
   const liLetter = document.getElementsByClassName('letter');
   const liShow = document.getElementsByClassName('show');
   const overlay = document.getElementById('overlay');
-  //const restartButton = document.querySelector('#overlay').innerHTML = '<a class="btn__reset">Restart Game</a>';
+  const title = document.querySelector('#overlay h2');
+  const restartButton = document.querySelector('#overlay a');
 
   if ( liLetter.length === liShow.length ) {
     overlay.className = 'win';
-    //overlay.textContent = 'You won!';  
+    title.textContent = 'You won!';  
     overlay.style.display = 'flex';
     overlay.style.fontSize = '4em';
-    overlay.innerHTML = 'You won! <a class="btn__reset">Restart Game</a>';
+    restartButton.textContent = 'Restart Button';
     return overlay;
   } else {
     if ( missed > 4 ) {
       overlay.className = 'lose';
-      //overlay.textContent = 'You lost, try again!';
+      title.textContent = 'You lost, try again!';
       overlay.style.display = 'flex';
       overlay.style.fontSize = '4em';
-      overlay.innerHTML = 'You lost. Try again. <a class="btn__reset">Restart Game</a>';
+      restartButton.textContent = 'Restart Button';
       return overlay;
     }
   }
@@ -74,6 +75,20 @@ const checkWin = () => {
 
 // listen for the start game button to be pressed
 btn__reset.addEventListener('click', () => {
+  if( btn__reset.textContent === 'Restart Button' ) {
+    ul.innerHTML = '';
+    missed = 0;
+    let tries = document.getElementsByClassName('tries');
+    for ( let i = 0; i < tries.length; i++ ) {
+      tries[i].style.display = 'inline-block';
+    }
+
+    const buttons = document.getElementsByTagName('button');
+    for ( let i = 0; i < buttons.length; i++ ) {
+      buttons[i].className = '';
+    }
+  }
+
   document.getElementById('overlay').style.display = 'none';
   let randomPhrase = getRandomPhraseAsArray(phrases);
   addPhraseToDisplay(randomPhrase);
@@ -85,13 +100,11 @@ qwerty.addEventListener('click', (e) => {
     const checkLetterResult = checkLetter(e.target);
     e.target.className += 'chosen';
     if( checkLetterResult === null ) {
+      
+      let tries = document.getElementsByClassName('tries')[missed];
       missed += 1;
-      let ol = document.getElementsByTagName('ol')[0];
-      let tries = document.getElementsByClassName('tries')[0];
-      ol.removeChild(tries);
+      tries.style.display = 'none';
     }
   }
   checkWin();
 });
-
-// listen for the Restart Game button to be clicked
