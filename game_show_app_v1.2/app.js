@@ -103,7 +103,7 @@ qwerty.addEventListener('click', (e) => {
       
       let tries = document.getElementsByClassName('tries')[missed];
       missed += 1;
-      tries.style.display = 'none';
+      tries.innerHTML = '<img src=images/lostHeart.png height="35px" width="30px">';
     }
   }
   checkWin();
