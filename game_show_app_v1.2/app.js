@@ -80,7 +80,7 @@ btn__reset.addEventListener('click', () => {
     missed = 0;
     let tries = document.getElementsByClassName('tries');
     for ( let i = 0; i < tries.length; i++ ) {
-      tries[i].style.display = 'inline-block';
+      tries[i].innerHTML = '<img src=images/liveHeart.png height="35px" width="30px">';
     }
 
     const buttons = document.getElementsByTagName('button');
